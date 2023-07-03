@@ -11,6 +11,9 @@ vim.opt.expandtab = true                            -- Convert tabs to spaces (P
 vim.opt.tabstop = 4                                 -- 4 spaces for a line indent
 vim.opt.shiftwidth = 4                              -- 4 spaces indentation  when using '>>' '<<'
 
+-- Copy/Paste
+vim.opt.clipboard = "unnamedplus"                               -- Allow nvim to access system  clipboard (On linux, you need 'xclip' if using x11 or 'wl-copy' & 'wl-paste' if using Wayland
+
 -- Interface
 vim.opt.number = true                               -- Show line numbers
 vim.opt.relativenumber = true                       -- Show line numbers relative to your current line
