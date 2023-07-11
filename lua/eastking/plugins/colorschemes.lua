@@ -2,11 +2,12 @@ return {
 	{
         'rose-pine/neovim', 
         name = 'rose-pine', 
+        lazy = true,
         
     },
     {
         "folke/tokyonight.nvim",
-        opts = {},
+        lazy = true,
     },
     {
         "shaunsingh/moonlight.nvim",
