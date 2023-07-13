@@ -67,6 +67,8 @@ return
           TypeParameter = "󰉺",
         }
 
+
+        
         cmp.setup ({
           snippet = {
             expand = function(args)
@@ -86,7 +88,7 @@ return
             },
             -- Accept currently selected item. If none selected, `select` first item.
             -- Set `select` to `false` to only confirm explicitly selected items.
-            ["<CR>"] = cmp.mapping.confirm { select = true },
+            ["<CR>"] = cmp.mapping.confirm { select = false },
             ["<Tab>"] = cmp.mapping(function(fallback)
               if cmp.visible() then
                 cmp.select_next_item()
@@ -134,7 +136,6 @@ return
             { name = "luasnip" },
             { name = "buffer" },
             { name = "path" },
-            { name = "cmdline" },
           },
           confirm_opts = {
             behavior = cmp.ConfirmBehavior.Replace,
@@ -142,10 +143,10 @@ return
           },
           window = {
             documentation = cmp.config.window.bordered(),
+            completion = cmp.config.window.bordered(),
           },
           experimental = {
             ghost_text = false,
-            native_menu = false,
           },
         })
         
@@ -171,5 +172,9 @@ return
           })
         })
 
+
+
     end,
+    
+     
 }
