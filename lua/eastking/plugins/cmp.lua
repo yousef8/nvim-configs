@@ -1,7 +1,7 @@
 return
 {
     "hrsh7th/nvim-cmp",
-    
+
     dependencies = {
         {
             "hrsh7th/cmp-buffer"
@@ -16,6 +16,12 @@ return
             "saadparwaiz1/cmp_luasnip"
         },
         {
+            "hrsh7th/cmp-nvim-lsp",
+        },
+        {
+            "hrsh7th/cmp-nvim-lua",
+        },
+        {
             "L3MON4D3/LuaSnip",
             -- follow latest release.
             version = "1.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
@@ -24,7 +30,7 @@ return
             dependencies = {
                 "rafamadriz/friendly-snippets"
             },
-            opts = function(_, opts) 
+            opts = function(_, opts)
                 require("luasnip.loaders.from_vscode").lazy_load()
             end,
         },
@@ -38,7 +44,7 @@ return
             local col = vim.fn.col "." - 1
             return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
         end
-        
+
         local kind_icons = {
           Text = "󰊄",
           Method = "m",
@@ -68,7 +74,6 @@ return
         }
 
 
-        
         cmp.setup ({
           snippet = {
             expand = function(args)
@@ -125,6 +130,8 @@ return
               vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
               -- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
               vim_item.menu = ({
+                nvim_lua = "[Lua]",
+                nvim_lsp = "[Lsp]",
                 luasnip = "[Snippet]",
                 buffer = "[Buffer]",
                 path = "[Path]",
@@ -133,6 +140,8 @@ return
             end,
           },
           sources = {
+            { name =  "nvim_lua" },
+            { name = 'nvim_lsp' },
             { name = "luasnip" },
             { name = "buffer" },
             { name = "path" },
@@ -177,4 +186,4 @@ return
     end,
     
      
-}
+} 

@@ -41,7 +41,7 @@ vim.opt.encoding = "utf-8"                                      -- Self Explanat
 -- Other
 vim.opt.backup = false                                          --  Many online configurations recommend that
 vim.opt.swapfile = false                                        -- Also very recommende in online configurations
-vim.opt.completeopt = {"menuone", "noselect"}                   -- For completions in insert mode
+vim.opt.completeopt = {"menu", "menuone", "noselect"}                   -- For completions in insert mode
 vim.opt.conceallevel = 0                                        -- so that `` is visible in makdown files
 vim.opt.undofile = true                                         -- Enable persisten undo
 vim.opt.undodir = os.getenv("HOME") .. "/.vim.undodir"          --  Specifiy a directory for undo files
