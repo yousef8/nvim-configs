@@ -1,22 +1,23 @@
 return {
-	{
-        'rose-pine/neovim', 
-        name = 'rose-pine', 
-        lazy = true,
-        
-    },
     {
         "folke/tokyonight.nvim",
         lazy = true,
     },
     {
-        "shaunsingh/moonlight.nvim",
+        "nyoom-engineering/oxocarbon.nvim",
+        lazy = true,
+         --config= function()
+            --vim.opt.background = "dark"
+            --vim.cmd([[colorscheme oxocarbon]])
+        --end,
+    },
+    {
+        "EdenEast/nightfox.nvim",
         lazy = false,
         priority = 1000,
         config= function()
-            vim.cmd([[colorscheme moonlight]]) 
+            vim.cmd([[colorscheme carbonfox]])
         end,
-
     }
-}
 
+}
