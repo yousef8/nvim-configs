@@ -18,17 +18,24 @@ return
     },
 
     config = function(_, _)
-        local builtin = require('telescope.builtin')
-        local telescope = require "telescope"
         local actions = require "telescope.actions"
-        local themes = require "telescope.themes"
+        local telescope = require('telescope')
 
-        vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-        vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-        vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-        vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
-        vim.keymap.set('n', '<C-_>', builtin.current_buffer_fuzzy_find, {})
-
+        vim.keymap.set('n', '<leader>ff',
+            "<cmd> lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown())<CR>",
+            {})
+        vim.keymap.set('n', '<leader>fg',
+            "<cmd> lua require('telescope.builtin').live_grep(require('telescope.themes').get_dropdown())<CR>",
+            {})
+        vim.keymap.set('n', '<leader>fb',
+            "<cmd> lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown())<CR>",
+            {})
+        vim.keymap.set('n', '<leader>fh',
+            "<cmd> lua require('telescope.builtin').help_tags(require('telescope.themes').get_dropdown())<CR>",
+            {})
+        vim.keymap.set('n', '<C-_>',
+            "<cmd> lua require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown())<CR>",
+            {})
 
         telescope.setup {
             defaults = {
