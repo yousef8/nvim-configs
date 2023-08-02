@@ -17,6 +17,7 @@ return
         }
 
         local function on_attach(client, bufnr)
+            -- Keymaps
             vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr })
             vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, { buffer = bufnr })
             vim.keymap.set("n", "<leader>gt", vim.lsp.buf.type_definition, { buffer = bufnr })
@@ -24,7 +25,6 @@ return
             vim.keymap.set("n", "[d", vim.diagnostic.goto_next, { buffer = bufnr })
             vim.keymap.set("n", "]d", vim.diagnostic.goto_prev, { buffer = bufnr })
             vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = bufnr })
-            -- the below function should get the code action available on the whole line no matter where are you standing in the line
             vim.keymap.set("n", "<leader>ca",
                 function()
                     local curr_row = vim.api.nvim_win_get_cursor(0)[1]
@@ -36,6 +36,11 @@ return
                     "the below function should get the code action available on the whole line no matter where are you standing in the line"
                 })
 
+            -- configs
+            -- configs : keep diagnostic message in insert mode
+            vim.diagnostic.config({ update_in_insert = true })
+
+            -- config : format on save
             local format_on_save = vim.api.nvim_create_augroup('formatOnSave', { clear = false })
 
             if client.supports_method("textDocument/formatting") then
