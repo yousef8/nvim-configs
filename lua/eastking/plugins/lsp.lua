@@ -17,13 +17,24 @@ return
         }
 
         local function on_attach(client, bufnr)
-            vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = 0 })
-            vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, { buffer = 0 })
-            vim.keymap.set("n", "<leader>gt", vim.lsp.buf.type_definition, { buffer = 0 })
-            vim.keymap.set("n", "<leader>gi", vim.lsp.buf.implementation, { buffer = 0 })
-            vim.keymap.set("n", "[d", vim.diagnostic.goto_next, { buffer = 0 })
-            vim.keymap.set("n", "]d", vim.diagnostic.goto_prev, { buffer = 0 })
-            vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = 0 })
+            vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr })
+            vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, { buffer = bufnr })
+            vim.keymap.set("n", "<leader>gt", vim.lsp.buf.type_definition, { buffer = bufnr })
+            vim.keymap.set("n", "<leader>gi", vim.lsp.buf.implementation, { buffer = bufnr })
+            vim.keymap.set("n", "[d", vim.diagnostic.goto_next, { buffer = bufnr })
+            vim.keymap.set("n", "]d", vim.diagnostic.goto_prev, { buffer = bufnr })
+            vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = bufnr })
+            -- the below function should get the code action available on the whole line no matter where are you standing in the line
+            vim.keymap.set("n", "<leader>ca",
+                function()
+                    local curr_row = vim.api.nvim_win_get_cursor(0)[1]
+                    vim.lsp.buf.code_action { ["range"] = { ["start"] = { curr_row, 0 }, ["end"] = { curr_row, 100 } } }
+                end,
+                {
+                    buffer = bufnr,
+                    desc =
+                    "the below function should get the code action available on the whole line no matter where are you standing in the line"
+                })
 
             local format_on_save = vim.api.nvim_create_augroup('formatOnSave', { clear = false })
 
