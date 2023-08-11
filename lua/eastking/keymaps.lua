@@ -27,7 +27,7 @@ vim.keymap.set('n', '<C-Left>', ':vertical resize -2<CR>', {})
 vim.keymap.set('n', '<C-Right>', ':vertical resize +2<CR>', {})
 
 -- Explorer Menu
-vim.keymap.set('n', '<leader>e', ':Lex 20<CR>')
+vim.keymap.set('n', '<leader>e', '<cmd>NvimTreeToggle<CR>')
 
 -- Better Movement between buffers
 vim.keymap.set('n', '<S-n>', ':bn<CR>')
