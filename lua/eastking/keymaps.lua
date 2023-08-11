@@ -21,6 +21,10 @@ vim.keymap.set('n', '<C-j>', '<C-w>j')
 vim.keymap.set('n', '<C-k>', '<C-w>k')
 vim.keymap.set('n', '<C-l>', '<C-w>l')
 
+-- Better Buffer Navigation
+vim.keymap.set('n', '<S-l>', '<cmd>bnext<CR>', {})
+vim.keymap.set('n', '<S-h>', '<cmd>bprevious<CR>', {})
+
 vim.keymap.set('n', '<C-Up>', ':resize -2<CR>', {})
 vim.keymap.set('n', '<C-Down>', ':resize +2<CR>', {})
 vim.keymap.set('n', '<C-Left>', ':vertical resize -2<CR>', {})
