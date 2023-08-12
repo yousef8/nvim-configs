@@ -1,4 +1,4 @@
-return {
+local M = {
   {
     'folke/tokyonight.nvim',
     lazy = true,
@@ -19,5 +19,6 @@ return {
       vim.cmd([[colorscheme carbonfox]])
     end,
   }
-
 }
+
+return M
