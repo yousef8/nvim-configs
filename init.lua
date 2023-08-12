@@ -1,1 +1,1 @@
-require("eastking")
+require('eastking')
